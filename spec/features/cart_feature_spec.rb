@@ -1,7 +1,4 @@
 describe 'Feature Test: Cart', :type => :feature do
-  before(:each) do
-    FactoryGirl.create(:user)
-  end
 
   describe "Checking out" do
 
