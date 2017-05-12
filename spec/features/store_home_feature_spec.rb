@@ -1,4 +1,9 @@
 describe 'Feature Test: Store', :type => :feature do
+
+    before(:each) do
+      FactoryGirl.create(:user)
+    end
+
     describe "Category List" do
       it "displays all of the categories as links" do
         visit store_path
