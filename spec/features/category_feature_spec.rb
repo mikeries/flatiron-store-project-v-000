@@ -1,8 +1,4 @@
 describe 'Feature Test: Category', :type => :feature do
-  before(:each) do
-    FactoryGirl.create(:user)
-    FactoryGirl.create(:category)
-  end
 
   describe "Item List" do
     before(:each) do
