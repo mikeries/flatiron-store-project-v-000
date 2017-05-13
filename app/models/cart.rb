@@ -4,12 +4,6 @@ class Cart < ActiveRecord::Base
   belongs_to :user
 
   def total
-    # total = 0
-    # line_items.each do |li|
-    #   total = total + (li.item.price * li.quantity)
-    # end
-    # total
-
     line_items.inject(0) {|sum, li| sum + li.item.price * li.quantity}
   end
 
@@ -21,6 +15,9 @@ class Cart < ActiveRecord::Base
     else
       @li = LineItem.new(cart_id: self.id, item_id: itemid, quantity: 1)
     end
+    # @li = line_items.find_or_create_by(item_id: itemid)
+    # @li.quantity += 1
+    # @li
   end
 
 end
