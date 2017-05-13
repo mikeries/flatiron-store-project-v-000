@@ -18,11 +18,8 @@ class Cart < ActiveRecord::Base
   end
 
   def checkout!
-    self.line_items.each do |line_item|
-      line_item.item.inventory = line_item.item.inventory - line_item.quantity
-      line_item.item.save
-    end
-    self.update(status: 'submitted')
+    self.line_items.each { |li| li.item.take_inventory(li.quantity) }
+    update(status: 'submitted')
   end
 
 end

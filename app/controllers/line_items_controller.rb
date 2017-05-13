@@ -9,9 +9,9 @@ class LineItemsController < ApplicationController
     #@cart.add_item(params[:item_id])
     #@cart.save
     if @cart.line_items.find_by(item_id:params[:item_id])
-      existing_item = @cart.line_items.find_by(item_id:params[:item_id])
-      existing_item.quantity += 1
-      existing_item.save
+      existing_li = @cart.line_items.find_by(item_id:params[:item_id])
+      existing_li.quantity += 1
+      existing_li.save
     else
       LineItem.create(item_id: params[:item_id], cart_id:@cart.id)
     end

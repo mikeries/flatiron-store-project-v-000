@@ -3,10 +3,11 @@ class Item < ActiveRecord::Base
   has_many :line_items
 
   def self.available_items
-    @ai = []
-    all.each do |item|
-      @ai << item unless item.inventory == 0
-    end
-    @ai
+    all.select {|item| item.inventory > 0}
+  end
+
+  def take_inventory(quantity)
+    self.inventory = self.inventory - quantity
+    save
   end
 end
