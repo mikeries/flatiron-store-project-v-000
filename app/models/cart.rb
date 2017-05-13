@@ -4,11 +4,13 @@ class Cart < ActiveRecord::Base
   belongs_to :user
 
   def total
-    total = 0
-    line_items.each do |li|
-      total = total + (li.item.price * li.quantity)
-    end
-    total
+    # total = 0
+    # line_items.each do |li|
+    #   total = total + (li.item.price * li.quantity)
+    # end
+    # total
+
+    line_items.inject(0) {|sum, li| sum + li.item.price * li.quantity}
   end
 
   def add_item(itemid)
