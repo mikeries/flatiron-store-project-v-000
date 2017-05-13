@@ -15,9 +15,14 @@ class Cart < ActiveRecord::Base
     else
       @li = LineItem.new(cart_id: self.id, item_id: itemid, quantity: 1)
     end
-    # @li = line_items.find_or_create_by(item_id: itemid)
-    # @li.quantity += 1
-    # @li
+  end
+
+  def checkout!
+    self.line_items.each do |line_item|
+      line_item.item.inventory = line_item.item.inventory - line_item.quantity
+      line_item.item.save
+    end
+    self.update(status: 'submitted')
   end
 
 end
