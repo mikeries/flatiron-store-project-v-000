@@ -5,3 +5,4 @@ class StoreController < ApplicationController
     @items = Item.available_items
   end
 end
+ 

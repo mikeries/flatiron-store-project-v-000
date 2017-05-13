@@ -53,6 +53,7 @@ describe 'Feature Test: Cart', :type => :feature do
 
        @user.reload
        expect(@user.current_cart).to be_nil
+
      end
     end
   end
